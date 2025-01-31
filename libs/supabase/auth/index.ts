@@ -1,11 +1,16 @@
 import { supabase } from ".."
 
 export const login = async (credentials: ICredentials) => {
-    try {
-        const { data, error } = await supabase.auth.signInWithPassword(credentials)
-        console.log(data)
-        return data
-    } catch (_) {
-        console.log(_)
-    }
+	const response: ISuapaResponse = { status: false, message: "", data: null }
+	try {
+		const { data, error } = await supabase.auth.signInWithPassword(credentials)
+		if (error) {
+			response.message = error.message
+		} else {
+			response.status = true
+		}
+	} catch (_) {
+		console.log(_)
+	}
+	return response;
 }

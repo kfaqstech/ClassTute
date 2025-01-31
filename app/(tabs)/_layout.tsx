@@ -9,8 +9,9 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 import Feather from '@expo/vector-icons/Feather';
+import withAuth from '@/components/hoc/withAuth';
 
-export default function TabLayout() {
+function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
@@ -45,3 +46,5 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+export default withAuth(TabLayout);
