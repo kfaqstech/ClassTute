@@ -34,6 +34,13 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
+        }
       ]
     ],
     "experiments": {
@@ -46,6 +53,12 @@
       "eas": {
         "projectId": "c2a6d800-060e-4afc-9284-7d9386444efc"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/c2a6d800-060e-4afc-9284-7d9386444efc"
     }
   }
 }

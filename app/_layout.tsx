@@ -32,6 +32,7 @@ export default function RootLayout() {
     return null;
   }
 
+
   const queryClient = new QueryClient();
 
   return (
@@ -39,9 +40,11 @@ export default function RootLayout() {
       <QueryClientProvider client={queryClient}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="live" />
+          <Stack.Screen name="live" options={{ headerShown: false }} />
+          <Stack.Screen name="courses" options={{title: "Courses"}} />
           <Stack.Screen name="login" options={{ headerShown: false }} />
           <Stack.Screen name="register" options={{ headerShown: false }} />
+          <Stack.Screen name="onboarding" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
       </QueryClientProvider>

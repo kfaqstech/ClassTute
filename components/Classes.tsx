@@ -24,15 +24,17 @@ const ClassView = (props: IClasseViewProps) => {
   };
 
   return (
-    <ThemedView className="shadow-md p-2">
-      <ImageBackground source={require('@/assets/images/partial-react-logo.png')} style={styles.thumbnail} />
-      <ThemedText>Live</ThemedText>
-      <ThemedText>{data?.name}</ThemedText>
-      <ThemedText>{data?.description}</ThemedText>
-      <ThemedView className="flex-row justify-end">
-      <Pressable className="bg-red" onPress={joinClass}><ThemedText>Join Class</ThemedText></Pressable>
+    <ThemedView className="shadow-md">
+      <ThemedView>
+        <ImageBackground source={ data.thumbnail || require('@/assets/images/classes.jpg')} style={styles.thumbnail} />
       </ThemedView>
-      
+      <ThemedText className="font-bold mt-4">{data?.name}</ThemedText>
+      <ThemedText className="text-sm">{data?.description}</ThemedText>
+      <ThemedView className="flex-row justify-end p-2">
+        <Pressable className="py-1 px-2 shadow-md bg-gray-200 rounded-md" onPress={joinClass}>
+          <ThemedText className="text-sm font-bold">Join Class</ThemedText>
+        </Pressable>
+      </ThemedView>
     </ThemedView>
   )
 }
@@ -42,7 +44,7 @@ const Classes = (props: IClassesProps) => {
 
   return (
     <ScrollView>
-      <ThemedView className="p-2">
+      <ThemedView>
         {
           data.map((d: any) => {
             return <View key={d.id}><ClassView data={d} /></View>
@@ -59,9 +61,7 @@ export default Classes;
 
 
 const styles = StyleSheet.create({
-
   thumbnail: {
-    height: 100,
-
+    height: 150,
   },
 });

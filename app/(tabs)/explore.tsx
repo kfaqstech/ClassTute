@@ -13,39 +13,35 @@ const LearningPost = (props: LearningPostProps) => {
   const { data } = props
   return (
     <ThemedView className='shadow-lg p-2'>
-      <ThemedText className='font-bol text-lg'>{data.title}</ThemedText>
-      <ThemedText>{data.content}</ThemedText>
+      <ThemedText className='font-bold text-lg'>{data.title}</ThemedText>
+      <ThemedText className='text-md'>{data.content}</ThemedText>
     </ThemedView>
   )
 }
 
 export default function TabTwoScreen() {
   const { data, isLoading, refetch } = useLearningPosts()
-  console.log(data)
 
   const onRefresh = useCallback(() => {
     refetch()
   }, []);
 
   return (
-    <SafeAreaView>
-      <ScrollView refreshControl={
-          <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
-        }>
-        <ThemedView className='p-4 gap-4'>
-          
-          {
-            data?.map((lp: any) => {
-              return <View key={lp.id}>
-                <LearningPost data={lp} />
-              </View>
-            })
-          }
+    <ScrollView refreshControl={
+      <RefreshControl refreshing={isLoading} onRefresh={onRefresh} />
+    }>
+      <ThemedView className='p-4 gap-4'>
 
-        </ThemedView>
-      </ScrollView>
-    </SafeAreaView>
+        {
+          data?.map((lp: any) => {
+            return <View key={lp.id}>
+              <LearningPost data={lp} />
+            </View>
+          })
+        }
 
+      </ThemedView>
+    </ScrollView>
   );
 }
 

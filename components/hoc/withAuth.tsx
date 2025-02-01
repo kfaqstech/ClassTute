@@ -12,6 +12,10 @@ const withAuth = (Component: React.ComponentType) => {
 				supabase.auth.getSession().then(({ data: { session } }) => {
 					if (!session) {
 						router.replace('/login')
+					} else {
+						// if(!session.user.user_metadata?.role) {
+						// 	router.replace('/onboarding')
+						// }
 					}
 				}).catch(_ => {
 					router.replace('/login')

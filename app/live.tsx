@@ -1,9 +1,9 @@
-import { View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useLocalSearchParams } from 'expo-router';
-
+import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { getAgoraToken } from '@/libs/supabase/agora';
+
 import AgoraSetup from '@/components/agora/AgoraSetup';
 
 const LiveClassRoom = () => {
@@ -17,12 +17,14 @@ const LiveClassRoom = () => {
   }, [])
 
   return (
-    <View>
-      {
-        (class_id && token) ? (<AgoraSetup token={token} channel={class_id as string} />) : (<ThemedText>Loading...</ThemedText>)
-      }
+    <ThemedView>
+      {/* {
+        (class_id && token) ?
+          (<AgoraSetup token={token} channel={class_id as string} />) :
+          (<ThemedText>Loading...</ThemedText>)
+      } */}
 
-    </View>
+    </ThemedView>
   )
 }
 

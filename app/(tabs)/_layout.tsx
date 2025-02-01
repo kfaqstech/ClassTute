@@ -35,7 +35,7 @@ function TabLayout() {
         options={{
           title: 'Home',
           headerShown: true,
-          headerRight: () => <View className='px-2'><Avatar/></View>,
+          headerRight: () => <View className='px-2'><Avatar /></View>,
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
@@ -43,15 +43,34 @@ function TabLayout() {
         name="explore"
         options={{
           title: 'Explore',
+          headerShown: true,
+          headerRight: () => <View className='px-2'><Avatar /></View>,
           tabBarIcon: ({ color }) => <Feather name="book-open" size={24} color={color} />,
         }}
       />
-    
+
       <Tabs.Screen
-        name="learnings"
+        name="learnings/index"
         options={{
           title: 'Learning',
+          headerShown: true,
+          headerRight: () => <View className='px-2'><Avatar /></View>,
           tabBarIcon: ({ color }) => <AntDesign name="playcircleo" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="learnings/[course]/index"
+        options={{
+          title: 'Learning',
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          href: null,
+          headerShown: false,
+          title: 'Settings',
         }}
       />
     </Tabs>

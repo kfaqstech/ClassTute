@@ -1,14 +1,16 @@
-import { View, Text } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import React from 'react'
+import { useRouter } from 'expo-router'
 
 interface AvatarProps {
   uri: string
 }
 const Avatar = () => {
+  const router = useRouter()
   return (
-    <View className='rounded-full border h-10 w-10 items-center justify-center'>
+    <Pressable className='rounded-full border h-10 w-10 items-center justify-center' onPress={() => router.push('/(tabs)/settings')}>
       <Text>MD</Text>
-    </View>
+    </Pressable>
   )
 }
 
