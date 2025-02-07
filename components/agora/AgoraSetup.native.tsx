@@ -18,8 +18,7 @@ const getPermission = async () => {
   if (Platform.OS === 'android') {
     await PermissionsAndroid.requestMultiple([
       PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-      PermissionsAndroid.PERMISSIONS.CAMERA,
-      PermissionsAndroid.PERMISSIONS.FOREGROUND_SERVICE
+      PermissionsAndroid.PERMISSIONS.CAMERA
     ]);
   }
 };

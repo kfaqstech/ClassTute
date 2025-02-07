@@ -4,10 +4,11 @@ import { ThemedView } from "../ThemedView";
 import { ThemedText } from "../ThemedText";
 
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { localTime } from "@/libs/utils";
 
 const ClassCard = ({ data }: any) => {
   return (
-    <ThemedView className="flex flex-row justify-between p-4 rounded-md">
+    <ThemedView className="flex flex-row justify-between p-2 rounded-md">
       <Image
         source={data?.thumbnail || require("@/assets/images/classes.jpg")}
         style={styles.thumbnail}
@@ -16,12 +17,12 @@ const ClassCard = ({ data }: any) => {
         <ThemedView className="flex flex-row gap-2 items-center">
           <MaterialIcons name="access-time" size={20} color="black" />
           <ThemedText>Start :</ThemedText>
-          <ThemedText>{data?.start_time}</ThemedText>
+          <ThemedText>{localTime(data?.start_time) }</ThemedText>
         </ThemedView>
         <ThemedView className="flex flex-row gap-2 items-center">
           <MaterialIcons name="access-time" size={20} color="black" />
           <ThemedText>End :</ThemedText>
-          <ThemedText>{data?.end_time}</ThemedText>
+          <ThemedText>{localTime(data?.end_time)}</ThemedText>
         </ThemedView>
         <ThemedView className="flex flex-row gap-2 items-center">
           <MaterialIcons name="class" size={20} color="black" />

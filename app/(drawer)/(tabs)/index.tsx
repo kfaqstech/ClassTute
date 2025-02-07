@@ -1,6 +1,6 @@
 import { ScrollView } from 'react-native';
 import { ThemedView } from '@/components/ThemedView';
-import { useFetchClasses, useFetchMyClasses } from '@/libs/supabase/classes';
+import { useFetchMyClasses } from '@/libs/supabase/classes';
 
 import Classes from '@/components/Classes';
 
@@ -9,13 +9,11 @@ function HomeScreen() {
 
   return (
     <ScrollView>
-      <ThemedView className='p-6'>
+      <ThemedView className='p-2'>
         {
           <Classes data={classes.data || []} />
         }
-       
       </ThemedView>
-     
     </ScrollView>
   );
 }
