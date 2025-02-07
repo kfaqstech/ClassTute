@@ -29,3 +29,18 @@ export const register = async (credentials: ICredentials) => {
 	}
 	return response;
 }
+
+export const logout = async () => {
+    const response: ISuapaResponse = { status: false, message: "", data: null };
+    try {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+            response.message = error.message;
+        } else {
+            response.status = true;
+        }
+    } catch (_) {
+        console.log(_);
+    }
+    return response;
+};
