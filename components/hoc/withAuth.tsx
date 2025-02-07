@@ -1,44 +1,60 @@
 import { supabase } from "@/libs/supabase";
+import useAuthStore from "@/stores/authStore";
 import { router } from "expo-router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
 
-const withAuth = (Component: React.ComponentType) => {
-	return (props: any) => {
-		const [loading, setLoading] = useState(true);
+interface AuthProps {
+  uid: string | null;
+  email: string | null;
+}
 
-		useEffect(() => {
-			const authenticate = async () => {
-				supabase.auth.getSession().then(({ data: { session } }) => {
-					if (!session) {
-						router.replace('/login')
-					} else {
-						if(!session.user.user_metadata?.role) {
-							router.replace('/onboarding')
-						}
-					}
-				}).catch(_ => {
-					router.replace('/login')
-				}).finally(() => {
-					setLoading(false)
-				})
-			};
+const withAuth = <P extends AuthProps>(Component: React.ComponentType<P>) => {
+  return (props: Omit<P, keyof AuthProps>) => {
+		const { setProfile } = useAuthStore()
+    const [loading, setLoading] = useState(true);
+    const auth = useRef<any>({});
 
-			authenticate();
-		}, []);
+    useEffect(() => {
+      const authenticate = async () => {
+        console.log("Checking Auth State....");
+        try {
+          const {
+            data: { session },
+          } = await supabase.auth.getSession();
+          if (!session) {
+            router.replace("/login");
+          } else {
+            auth.current = session.user;
+						setProfile(session.user.id)
+          }
+        } catch (_) {
+          router.replace("/login");
+        } finally {
+          setLoading(false);
+        }
+      };
+      authenticate();
+    }, []);
 
-		if (loading) {
-			return (
-				<View
-					style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-				>
-					<ActivityIndicator size="large" color="#0000ff" />
-				</View>
-			);
-		}
+    if (loading) {
+      return (
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+      );
+    }
 
-		return <Component {...props} />;
-	};
+    return (
+      <Component
+        {...(props as P)}
+        uid={auth.current.id || ""}
+        email={auth.current.email || ""}
+      />
+    );
+  };
 };
 
 export default withAuth;

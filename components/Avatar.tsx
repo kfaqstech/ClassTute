@@ -1,17 +1,22 @@
-import { View, Text, Pressable } from 'react-native'
-import React from 'react'
-import { useRouter } from 'expo-router'
+import React from "react";
+import { Text, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 
 interface AvatarProps {
-  uri: string
-}
-const Avatar = () => {
-  const router = useRouter()
-  return (
-    <Pressable className='rounded-full border h-10 w-10 items-center justify-center' onPress={() => router.push('/(tabs)/settings')}>
-      <Text>MD</Text>
-    </Pressable>
-  )
+  uri: string;
 }
 
-export default Avatar
+const Avatar = () => {
+  const navigation = useNavigation<DrawerNavigationProp<any>>();
+  return (
+    <Pressable
+      className="rounded-full border h-8 w-8 items-center justify-center"
+      onPress={() => navigation.openDrawer()}
+    >
+      <Text>MD</Text>
+    </Pressable>
+  );
+};
+
+export default Avatar;
