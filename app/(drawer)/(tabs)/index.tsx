@@ -1,11 +1,11 @@
 import { ScrollView } from 'react-native';
 import { ThemedView } from '@/components/ThemedView';
-import { useFetchClasses } from '@/libs/supabase/classes';
+import { useFetchClasses, useFetchMyClasses } from '@/libs/supabase/classes';
 
 import Classes from '@/components/Classes';
 
 function HomeScreen() {
-  const classes = useFetchClasses();
+  const classes = useFetchMyClasses();
 
   return (
     <ScrollView>

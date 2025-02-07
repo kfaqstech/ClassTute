@@ -14,6 +14,7 @@ const TextBox: React.FC<TextBoxProps> = ({
   variant = 'default',
   placeholder = '',
   onChangeText,
+  className,
   ...props
 }) => {
   const { colors } = useTheme()
@@ -34,7 +35,7 @@ const TextBox: React.FC<TextBoxProps> = ({
   return (
     <View>
       <TextInput
-        className={getVariantStyle()}
+        className={`${getVariantStyle()} ${className}`}
         placeholder={placeholder}
         onChangeText={onChangeText}
         style={{backgroundColor: colors.background, color: colors.text}}
