@@ -1,6 +1,6 @@
 export const USERROLE = [
   {
-    label: "STUDEN",
+    label: "STUDENT",
     value: "STUDENT"
   },
   {

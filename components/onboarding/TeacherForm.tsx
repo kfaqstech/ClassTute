@@ -4,6 +4,7 @@ import TextButton from '../shared/TextButton'
 
 import { useForm, Controller } from "react-hook-form";
 import TextBox from '../shared/TextBox';
+import { useUpdateProfile } from '@/libs/supabase/auth/profile';
 
 const TeacherForm = () => {
 
@@ -18,9 +19,10 @@ const TeacherForm = () => {
     },
   });
 
-
-  const save = () => {
-
+  const {mutate,error}= useUpdateProfile()
+  
+  const save = (data: any) => {
+    mutate(data)
   }
 
   return (
@@ -54,7 +56,7 @@ const TeacherForm = () => {
       />
       </ThemedView>
       <ThemedView className='w-full'>
-        <TextButton title='Save' onPress={save} />
+        <TextButton title='Save' onPress={handleSubmit(save)} />
       </ThemedView>
     </ThemedView>
   )

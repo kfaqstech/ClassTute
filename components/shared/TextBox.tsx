@@ -1,3 +1,4 @@
+import { useTheme } from '@react-navigation/native';
 import React from 'react';
 import { TextInput, TextInputProps, View } from 'react-native';
 
@@ -15,6 +16,7 @@ const TextBox: React.FC<TextBoxProps> = ({
   onChangeText,
   ...props
 }) => {
+  const { colors } = useTheme()
 
   const getVariantStyle = (): string => {
     switch (variant) {
@@ -35,6 +37,7 @@ const TextBox: React.FC<TextBoxProps> = ({
         className={getVariantStyle()}
         placeholder={placeholder}
         onChangeText={onChangeText}
+        style={{backgroundColor: colors.background, color: colors.text}}
         {...props}
       />
     </View>
