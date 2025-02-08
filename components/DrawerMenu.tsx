@@ -32,6 +32,9 @@ const DrawerMenu = (props: any) => {
         <ThemedView>
           <ThemedText>{profile?.first_name}</ThemedText>
           <ThemedText>{profile?.email}</ThemedText>
+          <Pressable onPress={() => router.push("/profile")} className="mt-2">
+            <ThemedText className="text-xs font-bold text-blue-600">Update Profile</ThemedText>
+          </Pressable>
         </ThemedView>
       </ThemedView>
       <DrawerContentScrollView {...props}>
@@ -51,7 +54,7 @@ const DrawerMenu = (props: any) => {
         />
         <DrawerItem
           label="courses"
-          onPress={() => {}}
+          onPress={() => { }}
           icon={({ size, color }) => (
             <FontAwesome5 name="book" size={size} color={color} />
           )}
@@ -63,6 +66,7 @@ const DrawerMenu = (props: any) => {
             <MaterialIcons name="class" size={size} color={color} />
           )}
         />
+
       </DrawerContentScrollView>
       <Pressable onPress={handleLogout} className="flex items-center p-2">
         <ThemedText>Logout</ThemedText>

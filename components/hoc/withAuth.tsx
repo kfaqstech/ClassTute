@@ -11,7 +11,7 @@ interface AuthProps {
 
 const withAuth = <P extends AuthProps>(Component: React.ComponentType<P>) => {
   return (props: Omit<P, keyof AuthProps>) => {
-		const { setProfile } = useAuthStore()
+		const { fetchProfile } = useAuthStore()
     const [loading, setLoading] = useState(true);
     const auth = useRef<any>({});
 
@@ -26,7 +26,7 @@ const withAuth = <P extends AuthProps>(Component: React.ComponentType<P>) => {
             router.replace("/login");
           } else {
             auth.current = session.user;
-						setProfile(session.user.id)
+						await fetchProfile()
           }
         } catch (_) {
           router.replace("/login");

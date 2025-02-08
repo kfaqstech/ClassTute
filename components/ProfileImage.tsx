@@ -15,7 +15,7 @@ const ProfileImage = () => {
     >
       <Image
         source={{
-          uri: "https://qvrqemrzdyfnjcqueblu.supabase.co/storage/v1/object/public/classtute-public/profile/22bde087-ec2f-44c8-a93a-5a0301602c19.png",
+          uri: "https://qvrqemrzdyfnjcqueblu.supabase.co/storage/v1/object/public/classtute-public/profile/22bde087-ec2f-44c8-a93a-5a0301602c19.png?time=123",
         }}
         width={50}
         height={50}
