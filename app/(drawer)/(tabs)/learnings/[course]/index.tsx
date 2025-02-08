@@ -37,29 +37,26 @@ const Course = () => {
   }, [data])
 
   return (
-    <SafeAreaView>
+    <ThemedView>
+      {
+        selected?.content_uri && <VideoContent uri={selected.content_uri} />
+      }
       <ThemedView>
-        {
-          selected?.content_uri && <VideoContent uri={selected.content_uri} />
-        }
-        <ThemedView>
-          <FlatList
-            data={data || []}
-            renderItem={({ item }) => (
-              <Pressable onPress={() => setSelected(item)} className='shadow-md p-2 flex-row gap-4 items-center'>
-                <ThemedView>
-                  <AntDesign name="playcircleo" size={24} />
-                </ThemedView>
-                <ThemedView>
-                  <ThemedText>{item.title}</ThemedText>
-                  <ThemedText className='text-xs'>{item.description}</ThemedText>
-                </ThemedView>
-              </Pressable>)}
-            keyExtractor={item => item.id} />
-        </ThemedView>
+        <FlatList
+          data={data || []}
+          renderItem={({ item }) => (
+            <Pressable onPress={() => setSelected(item)} className='shadow-sm bg-white p-2 flex-row gap-4 items-center'>
+              <ThemedView>
+                <AntDesign name="playcircleo" size={24} />
+              </ThemedView>
+              <ThemedView>
+                <ThemedText>{item.title}</ThemedText>
+                <ThemedText className='text-xs'>{item.description}</ThemedText>
+              </ThemedView>
+            </Pressable>)}
+          keyExtractor={item => item.id} />
       </ThemedView>
-    </SafeAreaView>
-
+    </ThemedView>
   )
 }
 

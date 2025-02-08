@@ -3,7 +3,7 @@ import { ThemedText } from "./ThemedText";
 import { ThemedView } from "./ThemedView";
 import { useRouter } from "expo-router";
 
-import ClassCard from "./Classes/ClassCard";
+import ClassCard from "./classes/ClassCard";
 
 interface IClasseViewProps {
   data: any;

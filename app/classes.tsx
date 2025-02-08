@@ -2,7 +2,7 @@ import { StyleSheet, FlatList, Pressable, View } from "react-native";
 import React, { useState } from "react";
 import { useFetchClasses } from "@/libs/supabase/classes";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ClassCard from "@/components/Classes/ClassCard";
+import ClassCard from "@/components/classes/ClassCard";
 import TextBox from "@/components/shared/TextBox";
 import { ThemedView } from "@/components/ThemedView";
 
@@ -17,19 +17,7 @@ const ItemView = ({ item }: any) => {
         <ThemedView>
           <ClassCard data={item} />
         </ThemedView>
-        <ThemedView className="flex-row justify-between p-4">
-          <ThemedView>
-            <ThemedText>{item.name}</ThemedText>
-            <ThemedText>{item.description}</ThemedText>
-          </ThemedView>
-          <ThemedView className="flex-row gap-2">
-            <ThemedText> Fees</ThemedText>
-            <ThemedText> 100Rs / Month</ThemedText>
-          </ThemedView>
-        </ThemedView>
-        <ThemedView className="p-2">
-          <TextButton title="Subscribe" />
-        </ThemedView>
+        
       </ThemedView>
     </ThemedView>
   );
@@ -58,7 +46,7 @@ const Classes = () => {
       <ThemedView>
         <FlatList
           data={classes.data || []}
-          renderItem={({ item }) => <ItemView item={item} />}
+          renderItem={({ item }) => <ClassCard data={item} />}
           keyExtractor={(item) => item.id}
         />
       </ThemedView>
