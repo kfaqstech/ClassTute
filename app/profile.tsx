@@ -14,7 +14,7 @@ import { router } from 'expo-router';
 import { updateProfile, updateProfileImage } from '@/libs/supabase/auth'
 import { notify } from '@/libs/notify'
 
-// import ImageInput from '@/components/shared/ImageInput'
+import ImageInput from '@/components/shared/ImageInput'
 
 
 const Profile = (props: any) => {
@@ -54,9 +54,9 @@ const Profile = (props: any) => {
 
   return (
     <ThemedView className='w-full p-6 gap-6'>
-      {/* <ThemedView className='items-center'>
+      <ThemedView className='items-center'>
         <ImageInput varient='avatar' output='blob' onSelect={(response) => setImage(response)} value={profile?.picture} />
-      </ThemedView> */}
+      </ThemedView>
       {
         image && (
           <ThemedView className='items-center'>

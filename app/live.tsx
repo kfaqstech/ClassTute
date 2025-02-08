@@ -29,11 +29,11 @@ const LiveClassRoom = () => {
 
   return (
     <ThemedView>
-      {/* {class_key && token ? (
+      {class_key && token ? (
         <AgoraSetup token={token as string} channel={class_key as string} />
       ) : (
         <ThemedText>Loading...</ThemedText>
-      )} */}
+      )}
     </ThemedView>
   );
 };
