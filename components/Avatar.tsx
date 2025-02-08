@@ -1,18 +1,17 @@
 import React from "react";
 import { Text, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { DrawerNavigationProp } from "@react-navigation/drawer";
+import { useRouter } from "expo-router";
 
 interface AvatarProps {
   uri: string;
 }
 
 const Avatar = () => {
-  const navigation = useNavigation<DrawerNavigationProp<any>>();
+  const router = useRouter();
   return (
     <Pressable
       className="rounded-full border h-8 w-8 items-center justify-center"
-      onPress={() => navigation.openDrawer()}
+      onPress={() => router.push('/profile')}
     >
       <Text>MD</Text>
     </Pressable>

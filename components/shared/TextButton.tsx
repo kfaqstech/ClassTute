@@ -6,11 +6,13 @@ type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
 interface ButtonProps extends TouchableOpacityProps {
   variant?: ButtonVariant;
   title: string;
+  className?: string
 }
 
 const TextButton: React.FC<ButtonProps> = ({
   variant = 'primary',
   title,
+  className,
   ...props
 }) => {
   const getVariantStyle = (): string => {
@@ -45,7 +47,7 @@ const TextButton: React.FC<ButtonProps> = ({
   };
 
   return (
-    <TouchableOpacity className={getVariantStyle()} {...props}>
+    <TouchableOpacity className={`${getVariantStyle()} ${className}`} {...props}>
       <Text className={getTextStyle()}>{title}</Text>
     </TouchableOpacity>
   );

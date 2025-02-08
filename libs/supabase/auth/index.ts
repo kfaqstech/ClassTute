@@ -63,17 +63,19 @@ export const updateProfile = async (uid: string, payload: any) => {
 
 export const updateProfileImage = async (uid: string, file: any) => {
 	const response: ISuapaResponse = { status: false, message: "", data: null }
+	debugger
 
 	try {
 		const { data, error } = await supabase.storage.from('classtute-public').upload(`profile/${uid}.png`, file, {
 			upsert: true,
 			contentType: 'image/png',
 		});
+		debugger
 
 		if (data) {
 			response.status = true
 			response.message = 'Image Uploaded Successfully!'
-			response.data(data)
+			response.data = data
 		}
 		if (error) response.message = error.message
 	} catch (_) {

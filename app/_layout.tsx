@@ -41,10 +41,11 @@ export default function RootLayout() {
         <Stack>
           <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
           <Stack.Screen name="live" options={{ headerShown: false }} />
-          <Stack.Screen name="courses" options={{title: "Courses"}} />
+          <Stack.Screen name="courses" options={{ title: "Courses" }} />
           <Stack.Screen name="login" options={{ headerShown: false }} />
           <Stack.Screen name="register" options={{ headerShown: false }} />
-          <Stack.Screen name="classes" options={{ headerShown: false }} />
+          <Stack.Screen name="profile" options={{ headerShown: true, title: 'Profile' }} />
+          <Stack.Screen name="classes" options={{ headerShown: true, title: 'Classes' }} />
           <Stack.Screen name="+not-found" />
         </Stack>
       </QueryClientProvider>

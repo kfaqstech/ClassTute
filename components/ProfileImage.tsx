@@ -7,7 +7,7 @@ interface ProfileImageProps {
   height: number;
 }
 
-const ProfileImage = () => {
+const ProfileImage = ({profile}: any) => {
   return (
     <View
       className="rounded-full border"
@@ -15,7 +15,7 @@ const ProfileImage = () => {
     >
       <Image
         source={{
-          uri: "https://qvrqemrzdyfnjcqueblu.supabase.co/storage/v1/object/public/classtute-public/profile/22bde087-ec2f-44c8-a93a-5a0301602c19.png?time=123",
+          uri: profile?.picture,
         }}
         width={50}
         height={50}

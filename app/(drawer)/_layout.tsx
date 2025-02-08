@@ -7,8 +7,8 @@ import { View } from 'react-native';
 const DrawerLayout = (props: any) => {
   return (
     <Drawer drawerContent={(props) => <DrawerMenu {...props} />} screenOptions={{
-      title: "",
-      headerLeft: () => <View className='px-4 py-1'><Avatar/></View>
+      title: "ClassTute",
+      headerRight: () => <View className='px-4 py-1'><Avatar/></View>
     }} />
   )
 }

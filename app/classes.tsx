@@ -12,8 +12,8 @@ import TextButton from "@/components/shared/TextButton";
 
 const ItemView = ({ item }: any) => {
   return (
-    <ThemedView className="p-2">
-      <ThemedView className="shadow-md">
+    <ThemedView className="p-4">
+      <ThemedView className="shadow-sm rounded-md">
         <ThemedView>
           <ClassCard data={item} />
         </ThemedView>
@@ -40,29 +40,30 @@ const Classes = () => {
   const [showFilter, setShowFilter] = useState(false);
 
   return (
-    <SafeAreaView>
+    <ThemedView>
+      <ThemedView className="p-4 flex-row items-center gap-4 rounded-lg">
+        <View style={{ flex: 1 }}>
+          <TextBox
+            placeholder="Search Class ..."
+            style={styles.searchInput}
+          />
+        </View>
+        <Pressable className="bg-gray-200 rounded-md p-2">
+          <MaterialIcons name="search" size={20} color="black" />
+        </Pressable>
+        <Pressable className="bg-gray-200 rounded-md p-2">
+          <MaterialIcons name="filter-list-alt" size={20} color="black" />
+        </Pressable>
+      </ThemedView>
       <ThemedView>
-        <ThemedView className="mb-4 p-2 flex-row items-center gap-2 rounded-lg">
-          <View style={{ flex: 1 }}>
-            <TextBox
-              placeholder="Search Class ..."
-              style={styles.searchInput}
-            />
-          </View>
-          <Pressable>
-            <MaterialIcons name="search" size={24} color="black" />
-          </Pressable>
-          <Pressable>
-            <MaterialIcons name="filter-list-alt" size={24} color="black" />
-          </Pressable>
-        </ThemedView>
         <FlatList
           data={classes.data || []}
           renderItem={({ item }) => <ItemView item={item} />}
           keyExtractor={(item) => item.id}
         />
       </ThemedView>
-    </SafeAreaView>
+    </ThemedView>
+
   );
 };
 

@@ -18,5 +18,5 @@ const Participants = ({ participants }: any) => {
 export default Participants;
 
 const styles = StyleSheet.create({
-  videoView: { width: '100%', height: 200, backgroundColor: "black" },
+  videoView: { width: '100%', height: '50%', backgroundColor: "black" },
 });

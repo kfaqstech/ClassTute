@@ -20,6 +20,7 @@ const SelectBox: React.FC<SelectProps> = ({ options, value, onChange }) => {
         selectedValue={value}
         onValueChange={(itemValue) => onChange(itemValue)}
         style={{ height: 50 }}
+        mode="dialog"
       >
         {options.map((option) => (
           <Picker.Item key={option.value.toString()} label={option.label} value={option.value} />

@@ -10,7 +10,6 @@ import {
 import Feather from '@expo/vector-icons/Feather';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { ThemedText } from "../ThemedText";
 import { useRouter } from "expo-router";
 import { ThemedView } from "../ThemedView";
 import WhiteBoard from "./WhiteBoard";
@@ -168,7 +167,7 @@ const AgoraSetup = ({ token, channel }: AgoraSetupProps) => {
               <Feather name={toggleAudio ? "mic" : "mic-off"} size={20} color="black" />
             </Pressable>
             <Pressable onPress={leaveChannel}>
-              <Feather name="phone-off" size={20} color="black" />
+              <Feather name="phone-off" size={20} color="red" />
             </Pressable>
           </View>
         </ThemedView>

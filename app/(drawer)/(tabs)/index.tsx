@@ -9,7 +9,7 @@ function HomeScreen() {
 
   return (
     <ScrollView>
-      <ThemedView className='p-2'>
+      <ThemedView>
         {
           <Classes data={classes.data || []} />
         }

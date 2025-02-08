@@ -9,7 +9,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import useAuthStore from "@/stores/authStore";
 import ProfileImage from "./ProfileImage";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const DrawerMenu = (props: any) => {
@@ -28,7 +27,7 @@ const DrawerMenu = (props: any) => {
       className="py-4"
     >
       <ThemedView className="flex-row items-center gap-4 p-4 border-b border-gray-200">
-        <ProfileImage />
+        <ProfileImage profile={profile}/>
         <ThemedView>
           <ThemedText>{profile?.first_name}</ThemedText>
           <ThemedText>{profile?.email}</ThemedText>
@@ -53,8 +52,8 @@ const DrawerMenu = (props: any) => {
           )}
         />
         <DrawerItem
-          label="courses"
-          onPress={() => { }}
+          label="Courses"
+          onPress={() => router.push('/courses')}
           icon={({ size, color }) => (
             <FontAwesome5 name="book" size={size} color={color} />
           )}

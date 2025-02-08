@@ -14,19 +14,13 @@ import { router } from 'expo-router';
 import { updateProfile, updateProfileImage } from '@/libs/supabase/auth'
 import { notify } from '@/libs/notify'
 
-import * as ImagePicker from 'expo-image-picker';
-import { Alert, Image, Pressable, TouchableOpacity, View } from 'react-native'
-import { supabase } from '@/libs/supabase'
+// import ImageInput from '@/components/shared/ImageInput'
 
 
 const Profile = (props: any) => {
   const { uid } = props;
   const { profile, setProfile } = useAuthStore();
-  const [image, setImage] = useState<string | null>(null);
-  const [uploading, setUploading] = useState(false);
-
-
-
+  const [image, setImage] = useState<any>(null);
 
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
@@ -35,19 +29,6 @@ const Profile = (props: any) => {
       gender: profile?.gender || '',
     }
   })
-
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['images'],
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-    }
-  };
 
   const onSubmit = async (data: any) => {
     const { status, message, data: profile } = await updateProfile(uid, data);
@@ -63,30 +44,26 @@ const Profile = (props: any) => {
 
   const uploadImage = async () => {
     if (!image) return;
-    const response = await fetch(image);
-    const blob = await response.blob();
-    const { status, message, data } = await updateProfileImage(uid, blob)
+    const { status, message } = await updateProfileImage(uid, image)
+    if (status) {
+      notify('Profile', message, 'success')
+    } else {
+      notify('Profile', message, 'error')
+    }
   };
-
-
 
   return (
     <ThemedView className='w-full p-6 gap-6'>
-
-      <TouchableOpacity onPress={() => pickImage()} className="items-center">
-        {image ? (
-          <Image source={{ uri: image }} style={{ width: 100, height: 100, borderRadius: 50 }} />
-        ) : (
-          <View style={{ width: 100, height: 100, borderRadius: 50, backgroundColor: '#ccc', justifyContent: 'center', alignItems: 'center' }}>
-            <ThemedText>+</ThemedText>
-          </View>
-        )}
-        <ThemedText className="mt-2 text-blue-500">Select Profile Picture </ThemedText>
-      </TouchableOpacity>
-
-      <Pressable className="items-center " onPress={uploadImage}>
-        <ThemedText>upload profile picture</ThemedText>
-      </Pressable>
+      {/* <ThemedView className='items-center'>
+        <ImageInput varient='avatar' output='blob' onSelect={(response) => setImage(response)} value={profile?.picture} />
+      </ThemedView> */}
+      {
+        image && (
+          <ThemedView className='items-center'>
+            <TextButton title='Save' onPress={uploadImage} className='w-20' />
+          </ThemedView>
+        )
+      }
 
       <ThemedView className='w-full '>
         <ThemedText>First Name</ThemedText>

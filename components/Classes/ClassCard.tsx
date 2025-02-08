@@ -31,17 +31,17 @@ const ClassCard = ({ data }: any) => {
         </ThemedView>
         <ThemedView className="flex flex-row gap-2 items-center">
           <MaterialIcons name="subject" size={20} color="black" />
-          <ThemedText>Subject</ThemedText>
+          <ThemedText>Subject :</ThemedText>
           <ThemedText>{data?.subject}</ThemedText>
         </ThemedView>
         <ThemedView className="flex flex-row gap-2 items-center">
           <MaterialIcons name="language" size={20} color="black" />
-          <ThemedText>Language</ThemedText>
+          <ThemedText>Language :</ThemedText>
           <ThemedText>{data?.language}</ThemedText>
         </ThemedView>
         <ThemedView className="flex flex-row gap-2 items-center">
           <MaterialIcons name="person" size={20} color="black" />
-          <ThemedText>Participents</ThemedText>
+          <ThemedText>Participents :</ThemedText>
           <ThemedText>{data?.batch_size}</ThemedText>
         </ThemedView>
       </ThemedView>

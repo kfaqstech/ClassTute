@@ -17,7 +17,7 @@ const ClassView = (props: IClasseViewProps) => {
   const { data } = props;
   const router = useRouter();
 
-  
+
 
   const joinClass = () => {
     router.push({
@@ -27,19 +27,22 @@ const ClassView = (props: IClasseViewProps) => {
   };
 
   return (
-    <ThemedView className="shadow-md">
-      <ClassCard data={data.classes} />
-      <ThemedText className="font-bold mt-4">{data?.classes?.name}</ThemedText>
-      <ThemedText className="text-sm">{data?.classes?.description}</ThemedText>
-      <ThemedView className="flex-row justify-end p-2">
-        <Pressable
-          className="py-1 px-2 shadow-md bg-gray-200 rounded-md"
-          onPress={joinClass}
-        >
-          <ThemedText className="text-sm font-bold">Join Class</ThemedText>
-        </Pressable>
+    <ThemedView className="p-2">
+      <ThemedView className="shadow-md rounded-sm p-2">
+        <ClassCard data={data.classes} />
+        <ThemedText className="font-bold mt-4">{data?.classes?.name}</ThemedText>
+        <ThemedText className="text-sm">{data?.classes?.description}</ThemedText>
+        <ThemedView className="flex-row justify-end p-2">
+          <Pressable
+            className="py-1 px-2 shadow-md bg-gray-200 rounded-md"
+            onPress={joinClass}
+          >
+            <ThemedText className="text-sm font-bold">Join Class</ThemedText>
+          </Pressable>
+        </ThemedView>
       </ThemedView>
     </ThemedView>
+
   );
 };
 
