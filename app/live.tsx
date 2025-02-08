@@ -6,17 +6,18 @@ import { getAgoraToken } from "@/libs/supabase/agora";
 
 import AgoraSetup from "@/components/agora/AgoraSetup";
 
-// import * as ScreenOrientation from 'expo-screen-orientation';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 const LiveClassRoom = () => {
   const { class_key, name, token } = useLocalSearchParams();
 
-  // useEffect(() => {
-  //   ScreenOrientation.unlockAsync();
-  //   return () => {
-  //     ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
-  //   };
-  // }, []);
+  useEffect(() => {
+    ScreenOrientation.unlockAsync();
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+    return () => {
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+    };
+  }, []);
 
   // const [token, setToken] = useState("");
 
@@ -28,11 +29,11 @@ const LiveClassRoom = () => {
 
   return (
     <ThemedView>
-      {/* {class_key && token ? (
+      {class_key && token ? (
         <AgoraSetup token={token as string} channel={class_key as string} />
       ) : (
         <ThemedText>Loading...</ThemedText>
-      )} */}
+      )}
     </ThemedView>
   );
 };
