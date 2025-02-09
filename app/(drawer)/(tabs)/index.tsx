@@ -3,12 +3,14 @@ import { ThemedView } from '@/components/ThemedView';
 import { useFetchClasses, useFetchMyClasses } from '@/libs/supabase/classes';
 
 import { ThemedText } from '@/components/ThemedText';
-import MyActiveClasses from '@/components/classes/MyActiveClasses';
+
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import SuggestedClasses from '@/components/classes/SuggestedClass';
+
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFetchCourses } from '@/libs/supabase/courses';
 import SuggestedCourse from '@/components/courses/SuggestedCourse';
+import MyActiveClasses from '@/components/Classes/MyActiveClasses';
+import SuggestedClasses from '@/components/Classes/SuggestedClass';
 
 function HomeScreen() {
   const classes = useFetchMyClasses();
@@ -56,3 +58,6 @@ function HomeScreen() {
 }
 
 export default HomeScreen
+
+
+
