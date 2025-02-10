@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
+    "@lexical/react": "^0.24.0",
+    "@lexical/rich-text": "^0.24.0",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-picker/picker": "^2.11.0",
     "@react-navigation/bottom-tabs": "^7.2.0",
@@ -41,6 +43,7 @@
     "expo-updates": "~0.26.15",
     "expo-video": "~2.0.5",
     "expo-web-browser": "~14.0.2",
+    "lexical": "^0.24.0",
     "nativewind": "^4.1.23",
     "react": "18.3.1",
     "react-dom": "18.3.1",

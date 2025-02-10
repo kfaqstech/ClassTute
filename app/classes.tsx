@@ -2,13 +2,14 @@ import { StyleSheet, FlatList, Pressable, View } from "react-native";
 import React, { useState } from "react";
 import { useFetchClasses } from "@/libs/supabase/classes";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ClassCard from "@/components/classes/ClassCard";
+
 import TextBox from "@/components/shared/TextBox";
 import { ThemedView } from "@/components/ThemedView";
 
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { ThemedText } from "@/components/ThemedText";
 import TextButton from "@/components/shared/TextButton";
+import ClassCard from "@/components/Classes/ClassCard";
 
 const ItemView = ({ item }: any) => {
   return (
