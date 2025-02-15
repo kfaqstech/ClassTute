@@ -1,12 +1,10 @@
-
-
 import React, { useState } from 'react';
 import { register } from '@/libs/supabase/auth';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TextBox from '@/components/shared/TextBox';
 import TextButton from '@/components/shared/TextButton';
 import { router } from 'expo-router';
-import { Alert, ImageBackground, Platform, Pressable, Text } from 'react-native';
+import { Alert, Pressable, Text, View, StyleSheet, Platform } from 'react-native';
 
 const Register = () => {
   const [credential, setCredential] = useState({
@@ -19,31 +17,27 @@ const Register = () => {
     if (status) {
       router.replace('/');
     } else {
-      Alert.alert("Register", message);
+      Alert.alert("Register Failed", message);
     }
   };
+
   const login = () => {
     router.replace('/login');
   };
 
 
   const pressableStyle = Platform.OS === 'web'
-    ? 'mt-4 w-full max-w-[330px] flex-row justify-end'
-    : 'absolute bottom-0 h-[50] w-full max-w-[360px] flex-row justify-center items-center bg-white';
+? 'w-full max-w-[330px] flex-row justify-end'
+: 'absolute bottom-0 h-[50] w-full max-w-[360px] flex-row justify-center items-center bg-white';
 
   return (
-    <SafeAreaView className="flex-1">
-      <ImageBackground
-        source={require('../assets/images/bg.jpg')}
-        resizeMode="cover"
-        className="flex-1 justify-center items-center w-full h-full"
-        style={{ width: "100%", height: "100%" }}
-      >
+    <SafeAreaView style={styles.container}>
+      <View style={styles.inputContainer}>
         <TextBox
           placeholder="Email"
           value={credential.email}
           onChangeText={(text) => setCredential({ ...credential, email: text })}
-          className="bg-white p-4 rounded-lg w-[330] max-w-[350px] mb-[20] text-base shadow-lg"
+          style={styles.textBox}
         />
 
         <TextBox
@@ -51,23 +45,58 @@ const Register = () => {
           value={credential.password}
           secureTextEntry={true}
           onChangeText={(text) => setCredential({ ...credential, password: text })}
-          className="bg-white p-4 rounded-lg w-[330] max-w-[350px] mb-[40] text-base shadow-lg"
+          style={styles.textBox}
         />
 
         <TextButton
           title="Register"
           onPress={doRegister}
-          className="bg-gray-700  p-4 rounded-lg w-full w-[330] max-w-[350px]  text-white text-center text-lg font-semibold shadow-lg"
+          style={styles.button}
         />
-        <Pressable onPress={login} className={pressableStyle}>
 
-          <Text className="text-gray-700 font-medium text-base" >Don't have an account? Login</Text>
-
+       
+      </View>
+      <Pressable onPress={login} className={pressableStyle}>
+          <Text className="text-gray-700 font-medium text-base">Already have an account? Login</Text>
         </Pressable>
-      </ImageBackground>
-
     </SafeAreaView>
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0'
+  },
+  inputContainer: {
+    width: 330,
+    maxWidth: 350,
+    padding: 15,
+  
+  },
+  textBox: {
+    backgroundColor: '#ffffff',
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 20,
+    fontSize: 16
+  },
+  button: {
+    backgroundColor: '#333333',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginBottom: 20
+  },
+  pressable: {
+    alignItems: 'center'
+  },
+
+});
+
 export default Register;
+
+
+
