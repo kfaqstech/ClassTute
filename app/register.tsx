@@ -12,14 +12,34 @@ const Register = () => {
     password: ""
   });
 
+  // const doRegister = async () => {
+  //   const { status, message } = await register(credential);
+  //   if (status) {
+  //     router.replace('/');
+  //   } else {
+  //     Alert.alert("Register Failed", message);
+  //   }
+  // };
+
+
   const doRegister = async () => {
     const { status, message } = await register(credential);
     if (status) {
-      router.replace('/');
+      Alert.alert(
+        "Account Created",
+        "Please check your email for OTP to verify your account.",
+        [
+          {
+            text: "OK",
+            onPress: () => router.replace('/verify')  // Redirect to the verification page
+          }
+        ]
+      );
     } else {
       Alert.alert("Register Failed", message);
     }
   };
+
 
   const login = () => {
     router.replace('/login');
