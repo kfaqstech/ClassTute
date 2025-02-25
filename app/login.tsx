@@ -59,7 +59,10 @@ const Login = () => {
 
       <Pressable onPress={register} className={pressableStyle}>
           <Text className="text-gray-700 font-medium text-base">Don't have an account? Register</Text>
+
         </Pressable>
+        <Text className="text-gray-700 font-medium text-base" onPress={()=>router.replace("/forgot-password")}>Forgot Password</Text>
+
     </SafeAreaView>
   );
 };
